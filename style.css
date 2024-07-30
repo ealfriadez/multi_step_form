@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap" rel="stylesheet');
 :root{
-    --main-color: #6c5ce7;
-    --secondary-color: #a29bfe;
+    --main-color: #066646;
+    --secondary-color: #76b399;
     --lighter-color: #e0e0e7;
     --light-color: #b0b0c0;
     --dark-color: #52505e;
@@ -152,9 +152,49 @@ form .grouping input{
     text-align: center;
     margin-right: 1em;
 }
+
+form .checkbox input{
+    height: auto;
+}
+
+form > div:not(.btn-group){
+    display: none;
+    -webkit-animation: fadeIn .6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation: fadeIn .6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        -webkit-transform: translateY(10%);
+        transform: translateY(10%);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+form > div.active{
+    display: block;
+}
+
+form > div .bg-svg{
+    width: 60px;
+    height: 50px;
+}
+form > .form-one .bg-svg{
+    background: url(assets/detective.svg);
+}
+form > .form-two .bg-svg{
+    background: url(assets/key.svg);
+}
+form > .form-three .bg-svg{
+    background: url(assets/lock_key.svg);
+}
 /* ==> Buttom */
 /* we will hide form elements so we can see button styling */
-.form-two, .form-three{display: none;}
 
 .btn-group{
     display: flex;
@@ -180,6 +220,18 @@ form .grouping input{
 .btn-group [class*="btn-"]:hover:not(:disabled){
     background-color: var(--dark-color);
     border-color: var(--light-color);
+}
+
+.btn-group .btn-submit,
+.form-three.active ~ .btn-group .btn-next{
+    display: none;
+}
+
+.form-three.active ~ .btn-group .btn-submit{
+    display: block;
+}
+.form-three.active ~ .btn-group{
+    justify-content: space-between;
 }
 
 ::placeholder{
